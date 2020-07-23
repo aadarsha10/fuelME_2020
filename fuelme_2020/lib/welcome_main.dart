@@ -4,96 +4,98 @@ import './registration.dart';
 import './signin.dart';
 import './Mainlogo.dart';
 
-class welcome_main extends StatelessWidget {
+class welcome_main extends StatefulWidget {
   welcome_main({
     Key key,
   }) : super(key: key);
+
+  @override
+  _welcome_mainState createState() => _welcome_mainState();
+}
+
+class _welcome_mainState extends State<welcome_main> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffffffff),
       body: Stack(
         children: <Widget>[
-          // Adobe XD layer: 'img' (component)
           img(),
           Transform.translate(
             offset: Offset(24.0, 488.0),
-            child:
-                // Adobe XD layer: 'buttons' (group)
-                Stack(
-              children: <Widget>[
-                Transform.translate(
-                  offset: Offset(0.0, 64.0),
-                  child:
-                      // Adobe XD layer: 'button' (group)
-                      Stack(
-                    children: <Widget>[
-                      // Adobe XD layer: 'Login BG' (group)
-                      Stack(
-                        children: <Widget>[
-                          // Adobe XD layer: 'bg' (shape)
-                          Container(
-                            width: 312.0,
-                            height: 52.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
-                              color: const Color(0xff455a64),
+            child: Container(
+              child: Stack(
+                children: <Widget>[
+                  Transform.translate(
+                    offset: Offset(0.0, 64.0),
+                    child:
+                        // Adobe XD layer: 'button' (group)
+                        Stack(
+                      children: <Widget>[
+                        // Adobe XD layer: 'Login BG' (group)
+                        Stack(
+                          children: <Widget>[
+                            // Adobe XD layer: 'bg' (shape)
+                            Container(
+                              width: 312.0,
+                              height: 52.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.0),
+                                color: const Color(0xff455a64),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                // Adobe XD layer: 'btn green' (component)
-                Container(),
-                Transform.translate(
-                  offset: Offset(0.0, 64.0),
-                  child:
-                      // Adobe XD layer: 'button' (group)
-                      Stack(
-                    children: <Widget>[
-                      // Adobe XD layer: 'Login BG' (group)
-                      Stack(
-                        children: <Widget>[
-                          // Adobe XD layer: 'bg' (shape)
-                          Container(
-                            width: 312.0,
-                            height: 52.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
-                              color: const Color(0xff455a64),
+                  Container(),
+                  Transform.translate(
+                    offset: Offset(0.0, 64.0),
+                    child: Stack(
+                      children: <Widget>[
+                        //'Login BG'
+                        Stack(
+                          children: <Widget>[
+                            //'bg'
+                            Container(
+                              width: 312.0,
+                              height: 52.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.0),
+                                color: const Color(0xff455a64),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Transform.translate(
-                  offset: Offset(0.0, 64.0),
-                  child:
-                      // Adobe XD layer: 'button' (group)
-                      Stack(
-                    children: <Widget>[
-                      // Adobe XD layer: 'Login BG' (group)
-                      Stack(
-                        children: <Widget>[
-                          // Adobe XD layer: 'bg' (shape)
-                          Container(
-                            width: 312.0,
-                            height: 52.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
-                              color: const Color(0xff455a63),
+                  Transform.translate(
+                    offset: Offset(0.0, 64.0),
+                    child:
+                        // Adobe XD layer: 'button' (group)
+                        Stack(
+                      children: <Widget>[
+                        // Adobe XD layer: 'Login BG' (group)
+                        Stack(
+                          children: <Widget>[
+                            // Adobe XD layer: 'bg' (shape)
+                            Container(
+                              width: 312.0,
+                              height: 52.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.0),
+                                color: const Color(0xff455a63),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Transform.translate(
@@ -129,9 +131,7 @@ class welcome_main extends StatelessWidget {
           ),
           Transform.translate(
             offset: Offset(117.0, 83.0),
-            child:
-                // Adobe XD layer: 'Main logo' (component)
-                Mainlogo(),
+            child: Mainlogo(),
           ),
           Transform.translate(
             offset: Offset(24.0, 233.17),
@@ -141,7 +141,7 @@ class welcome_main extends StatelessWidget {
               child: Text(
                 'Welcome to fuelME',
                 style: TextStyle(
-                  fontFamily: 'Gibson',
+                  fontFamily: 'Roboto',
                   fontSize: 52,
                   color: const Color(0xffffffff),
                   fontWeight: FontWeight.w600,
@@ -176,7 +176,7 @@ class welcome_main extends StatelessWidget {
               child: Text(
                 'CONTINUE WITH:',
                 style: TextStyle(
-                  fontFamily: 'Gibson',
+                  fontFamily: 'Roboto',
                   fontSize: 12,
                   color: const Color(0xffffffff),
                   fontWeight: FontWeight.w600,
@@ -189,7 +189,7 @@ class welcome_main extends StatelessWidget {
           Transform.translate(
             offset: Offset(168.0, 20.0),
             child:
-                // Adobe XD layer: 'pagination/light' (component)
+                // 'pagination/light' (component)
                 Container(),
           ),
         ],
