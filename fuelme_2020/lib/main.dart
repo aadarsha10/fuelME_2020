@@ -14,7 +14,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue[200],
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+<<<<<<< HEAD
       home: MyHomePage(title: 'FuelME'),
+=======
+      home: MyHomePage(title: 'FuelMe'),
+>>>>>>> 4c640e4f3e24d81dedff6c3b48a38cc037e7a7ea
     );
   }
 }
@@ -86,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'Welcome',
             ),
             Text(
               '$_counter',
@@ -96,9 +100,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+      
+        child: Text('Click'),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
