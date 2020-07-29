@@ -74,13 +74,13 @@ class _welcome_mainState extends State<welcome_main> {
                     Transform.translate(
                       offset: Offset(0.0, 64.0),
                       child:
-                          // 'button'
+                          // Adobe XD layer: 'button' (group)
                           Stack(
                         children: <Widget>[
-                          // 'Login BG'
+                          // Adobe XD layer: 'Login BG' (group)
                           Stack(
                             children: <Widget>[
-                              //'bg'
+                              // Adobe XD layer: 'bg' (shape)
                               Container(
                                 width: 312.0,
                                 height: 52.0,
@@ -189,7 +189,7 @@ class _welcome_mainState extends State<welcome_main> {
             Transform.translate(
               offset: Offset(168.0, 20.0),
               child:
-                  // 'pagination/light'
+                  // 'pagination/light' (component)
                   Container(),
             ),
           ],

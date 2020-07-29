@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fuelme_2020/Home/welcome_main.dart';
+// import 'package:fuelme_2020/Home/welcome_main.dart';
+import 'package:fuelme_2020/Screens/mainwrapper.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,17 +15,14 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Scaffold(
-        appBar: AppBar(title: Text('Fuel?')),
-        body: Center(
-          child: Text('Home'),
-        ),
-      ),
+      home: Wrapper(),
     );
   }
 }
 
-// @override
-// Widget build(BuildContext context) {
-
-// }
+//  Scaffold(
+//   appBar: AppBar(title: Text('Fuel?')),
+//   body: Center(
+//     child: Text('Home'),
+//   ),
+// ),
