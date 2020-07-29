@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:adobe_xd/blend_mask.dart';
-import './welcome_main.dart';
+import 'welcome_main.dart';
 
 class onboarding_1 extends StatelessWidget {
   onboarding_1({
