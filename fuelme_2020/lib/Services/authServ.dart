@@ -9,6 +9,11 @@ class AuthServ {
     return user != null ? User(uid: user.uid) : null;
   }
 
+  // auth change user stream i.e checking the auth status of the application
+  Stream<User> get user {
+    return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
+  }
+
   //signin anonymusly
   Future signinAnon() async {
     try {
