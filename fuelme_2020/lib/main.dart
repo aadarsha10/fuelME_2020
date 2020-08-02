@@ -5,6 +5,8 @@ import 'package:fuelme_2020/Services/authServ.dart';
 import 'package:fuelme_2020/models/user.dart';
 import 'package:provider/provider.dart';
 
+import 'Home/welcome_main.dart';
+
 void main() {
   runApp(MyApp());
 }
