@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 // import 'package:fuelme_2020/Home/welcome_main.dart';
 import 'package:fuelme_2020/Screens/mainwrapper.dart';
 
+import 'Home/welcome_main.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Wrapper(),
+      home: welcome_main(),
     );
   }
 }
