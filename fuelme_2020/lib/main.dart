@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fuelme_2020/Home/homepage.dart';
 // import 'package:fuelme_2020/Home/welcome_main.dart';
 import 'package:fuelme_2020/Screens/mainwrapper.dart';
 
@@ -13,7 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'FuelME',
+  
       theme: ThemeData(
+
         primaryColor: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
