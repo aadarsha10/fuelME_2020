@@ -29,7 +29,31 @@ class AuthServ {
   }
 
   // email signin
+  Future signinWithEmailandPwd(String email, String password) async {
+    try {
+      AuthResult result = await _auth.signInWithEmailAndPassword(
+          email: email.trim(), password: password);
+      FirebaseUser firebaseuser = result.user;
+      return _userFromFirebaseUser(firebaseuser);
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
   //registration
+  Future registerWithEmailandPwd(String email, String password) async {
+    try {
+      AuthResult result = await _auth.createUserWithEmailAndPassword(
+          email: email.trim(), password: password);
+      FirebaseUser firebaseuser = result.user;
+      return _userFromFirebaseUser(firebaseuser);
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
   //logout
   Future signOut() async {
     try {

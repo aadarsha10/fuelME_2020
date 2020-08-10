@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fuelme_2020/Home/homepage.dart';
+import 'package:fuelme_2020/Home/welcome_main.dart';
 import 'package:fuelme_2020/Screens/Authenticate/authenticate.dart';
-import 'package:fuelme_2020/Screens/Home/home.dart';
 import 'package:fuelme_2020/models/user.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +14,7 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return Authenticate();
     } else {
-      return Home();
+      return welcome_main();
     }
   }
 }
