@@ -12,9 +12,9 @@ class Wrapper extends StatelessWidget {
 
     //return home or authenticate
     if (user == null) {
-      return Authenticate();
-    } else {
       return welcome_main();
+    } else {
+      return MyHomePage();
     }
   }
 }
