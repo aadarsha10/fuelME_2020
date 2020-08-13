@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fuelme_2020/Screens/Authenticate/register.dart';
 import 'package:fuelme_2020/Screens/Authenticate/sign_in.dart';
-import 'package:fuelme_2020/Screens/Authenticate/signup.dart';
 import 'package:fuelme_2020/Screens/mainwrapper.dart';
 
 // ignore: camel_case_types
