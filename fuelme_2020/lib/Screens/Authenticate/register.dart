@@ -100,9 +100,13 @@ class _RegisterState extends State<Register> {
                         validator: (val) =>
                             val.isEmpty ? 'Enter an email' : null,
                         onChanged: (val) {
-                          setState(() {
-                            email = val;
-                          });
+                          if (val.isNotEmpty && val.contains("@")) {
+                            setState(() {
+                              email = val;
+                            });
+                          } else {
+                            return "Enter a valid email";
+                          }
                         },
                         decoration: textInputDecor.copyWith(hintText: 'Email'),
                       ),

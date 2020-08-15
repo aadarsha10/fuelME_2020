@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fuelme_2020/Screens/Authenticate/register.dart';
-import 'package:fuelme_2020/Screens/Authenticate/signup.dart';
 import 'package:fuelme_2020/Services/authServ.dart';
 import 'package:fuelme_2020/Shared/constants.dart';
 import 'package:fuelme_2020/Shared/loading.dart';
