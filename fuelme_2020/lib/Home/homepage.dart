@@ -14,19 +14,39 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       drawer: Navbar(),
       appBar: AppBar(
-          backgroundColor: Colors.lightBlueAccent,
+          backgroundColor: Colors.white,
+          iconTheme: new IconThemeData(color: Colors.black),
+
+
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
+
             children: [
-              Image.asset(
-                'asset/Mainlogo.png',
-                fit: BoxFit.contain,
-                height: 32,
-                alignment: FractionalOffset.centerLeft,
-              ),
               Container(
-                  padding: const EdgeInsets.all(4.0), child: Text('fuelMe'))
+                child:Padding(
+                  padding: const EdgeInsets.all(76.0),
+                  child: Row(
+
+                    children:<Widget>[
+                      Image.asset(
+                        'asset/Mainlogo.png',
+                        fit: BoxFit.contain,
+                        height: 32,
+                        alignment: FractionalOffset.centerLeft,
+                      ),
+                      Container(
+                          padding: const EdgeInsets.all(4.0), child: Text('fuelMe',style: TextStyle(color: Colors.blueGrey[800],fontWeight: FontWeight.bold),)),
+                    ],),
+                ),),
+
+              Container(
+                  padding: EdgeInsets.only(left:5.0),
+                  child:IconButton(icon: Icon(Icons.notifications),color:Colors.black,iconSize: 27,onPressed: ()=>{},splashColor: Colors.grey,))
+
             ],
+
+
+
           )),
       body: Stack(
         children: <Widget>[
