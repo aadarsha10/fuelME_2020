@@ -1,12 +1,26 @@
 import 'package:flappy_search_bar/flappy_search_bar.dart';
+import 'package:flappy_search_bar/search_bar_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter/services.dart';
 import 'package:fuelme_2020/widgets/Navbar.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(45.521563, -122.677433);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
   @override
   Widget build(BuildContext context) {
 //    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
@@ -16,18 +30,14 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
           backgroundColor: Colors.white,
           iconTheme: new IconThemeData(color: Colors.black),
-
-
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-
             children: [
               Container(
-                child:Padding(
+                child: Padding(
                   padding: const EdgeInsets.all(76.0),
                   child: Row(
-
-                    children:<Widget>[
+                    children: <Widget>[
                       Image.asset(
                         'asset/Mainlogo.png',
                         fit: BoxFit.contain,
@@ -35,21 +45,39 @@ class MyHomePage extends StatelessWidget {
                         alignment: FractionalOffset.centerLeft,
                       ),
                       Container(
-                          padding: const EdgeInsets.all(4.0), child: Text('fuelMe',style: TextStyle(color: Colors.blueGrey[800],fontWeight: FontWeight.bold),)),
-                    ],),
-                ),),
-
+                          padding: const EdgeInsets.all(4.0),
+                          child: Text(
+                            'fuelMe',
+                            style: TextStyle(
+                                color: Colors.blueGrey[800],
+                                fontWeight: FontWeight.bold),
+                          )),
+                    ],
+                  ),
+                ),
+              ),
               Container(
-                  padding: EdgeInsets.only(left:5.0),
-                  child:IconButton(icon: Icon(Icons.notifications),color:Colors.black,iconSize: 27,onPressed: ()=>{},splashColor: Colors.grey,))
-
+                  padding: EdgeInsets.only(left: 5.0),
+                  child: IconButton(
+                    icon: Icon(Icons.notifications),
+                    color: Colors.black,
+                    iconSize: 27,
+                    onPressed: () => {},
+                    splashColor: Colors.grey,
+                  ))
             ],
-
-
-
           )),
       body: Stack(
         children: <Widget>[
+          GoogleMap(
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: CameraPosition(
+              target: _center,
+              zoom: 11.0,
+            ),
+          ),
+          //google maps
+
           Container(
             child: Column(
               children: <Widget>[
@@ -89,6 +117,8 @@ class MyHomePage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: SearchBar(
+                      searchBarStyle: SearchBarStyle(
+                          backgroundColor: Color.fromRGBO(255, 255, 255, 10)),
                       hintText: "Search for delivery location",
                       hintStyle: TextStyle(
                         color: Colors.grey,
@@ -107,6 +137,7 @@ class MyHomePage extends StatelessWidget {
               ],
             ),
           ),
+
           SlidingSheet(
             elevation: 8,
             cornerRadius: 20,
