@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:fuelme_2020/widgets/Navbar.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
@@ -97,19 +98,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("Good Morning,"),
+                    Text("Good Morning,",),
                     Text(
                       "John",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle( color: Colors.green,
+                            fontWeight: FontWeight.bold,
+
+                            fontSize: 16)
+                         ),
                     ),
                   ],
                 ),
                 Text(
                   "How can we help you today?",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: GoogleFonts.poppins(
+                      textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+
+                          )
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 Container(
@@ -143,30 +151,36 @@ class _MyHomePageState extends State<MyHomePage> {
             cornerRadius: 20,
             snapSpec: const SnapSpec(
               snap: true,
-              snappings: [60, 300, double.infinity],
+              snappings: [40, 300, double.infinity],
               positioning: SnapPositioning.pixelOffset,
             ),
             headerBuilder: (context, state) {
               return Container(
-                  height: 50,
+                  height: 52,
                   width: double.infinity,
                   color: Colors.blueGrey[900],
                   alignment: Alignment.center,
                   child: Column(
                     children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(top: 8.0),
-                        child: Text(
-                          'Fuel Types Available',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
+                      Row(
+
+                        children: <Widget>[
+                          IconButton(icon: Icon(Icons.keyboard_arrow_up,color: Colors.white,)),
+                          Padding(
+                            padding: EdgeInsets.only(left: 80.0),
+                            child: Text(
+                              'Fuel Types Available',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          )
+                        ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 13.0),
+                        padding: const EdgeInsets.only(top: 3.0),
                         child: SizedBox(
                           width: double.infinity,
                           height: 1.0,
@@ -180,15 +194,15 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             builder: (context, state) {
               var itemwidth = 200;
-              var itemheight = 180;
+              var itemheight = 165;
               return Container(
-                height: 390,
+                height: 345,
                 color: Colors.blueGrey[900],
                 child: GridView.count(
                   crossAxisCount: 2,
                   padding: EdgeInsets.all(16.0),
                   childAspectRatio: (itemwidth / itemheight),
-                  crossAxisSpacing: 30.0,
+                  crossAxisSpacing: 50.0,
                   mainAxisSpacing: 30.0,
                   children: <Widget>[
                     InkWell(
@@ -201,8 +215,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Column(
                             children: <Widget>[
                               Container(
-                                height: 50,
-                                width: 50,
+                                height: 40,
+                                width: 40,
                                 margin: EdgeInsets.only(top: 10.0),
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
@@ -220,7 +234,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(1.0),
                                 child: Text(
                                   "Rs 115/litre",
                                   style: (TextStyle(
@@ -242,8 +256,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Column(
                             children: <Widget>[
                               Container(
-                                height: 51,
-                                width: 50,
+                                height: 40,
+                                width: 40,
                                 margin: EdgeInsets.only(top: 10.0),
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
@@ -261,7 +275,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(1.0),
                                 child: Text(
                                   "Rs 98/litre",
                                   style: (TextStyle(
@@ -283,8 +297,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Column(
                             children: <Widget>[
                               Container(
-                                height: 50,
-                                width: 50,
+                                height: 40,
+                                width: 40,
                                 margin: EdgeInsets.only(top: 10.0),
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
@@ -302,7 +316,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(1.0),
                                 child: Text(
                                   "Rs 1375",
                                   style: (TextStyle(
@@ -324,8 +338,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Column(
                             children: <Widget>[
                               Container(
-                                height: 50,
-                                width: 50,
+                                height: 40,
+                                width: 40,
                                 margin: EdgeInsets.only(top: 10.0),
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
@@ -343,7 +357,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(1.0),
                                 child: Text(
                                   "Rs 40/litre",
                                   style: (TextStyle(
