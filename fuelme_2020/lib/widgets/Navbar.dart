@@ -41,11 +41,14 @@ class Navbar extends StatelessWidget {
           ),
 
 
-        ListTile(
-            leading: Icon(Icons.home,color: Colors.white,),
-            title: Text('Home',style: TextStyle(color: Colors.white,fontSize: 18),),
-            onTap: () => {},
-          ),
+        InkWell(
+          child: ListTile(
+              leading: Icon(Icons.home,color: Colors.white,),
+              title: Text('Home',style: TextStyle(color: Colors.white,fontSize: 18),),
+              onTap: () => {},
+            ),
+          splashColor: Colors.green,
+        ),
           ListTile(
             leading: Icon(Icons.verified_user,color: Colors.white,),
             title: Text('Orders',style: TextStyle(color: Colors.white,fontSize: 18)),
