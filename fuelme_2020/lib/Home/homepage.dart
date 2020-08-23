@@ -7,6 +7,7 @@ import 'package:fuelme_2020/widgets/Navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
+import 'package:location/location.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -14,18 +15,30 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Location location = new Location();
+  bool _serviceEnabled;
+  LocationData _locationData;
   GoogleMapController mapController;
 
   final LatLng _center = const LatLng(45.521563, -122.677433);
-
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
+  }
+
+  Future<bool> _requestPermission() async {
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        debugPrint('Location service denied.');
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
 //    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
-
+    _requestPermission();
     return Scaffold(
       drawer: Navbar(),
       appBar: AppBar(
@@ -80,13 +93,24 @@ class _MyHomePageState extends State<MyHomePage> {
           //google maps
 
           Container(
+            height: 280,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: <Color>[
+                  Colors.white,
+                  Colors.white10,
+                ],
+              ),
+            ),
             child: Column(
               children: <Widget>[
                 Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                        padding: EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(3.0),
                         child: CircleAvatar(
                           backgroundImage: NetworkImage(
                               'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Barack_Obama_Circle.png/768px-Barack_Obama_Circle.png'),
@@ -98,15 +122,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("Good Morning,",),
+                    Text(
+                      "Good Morning,",
+                    ),
                     Text(
                       "John",
                       style: GoogleFonts.poppins(
-                        textStyle: TextStyle( color: Colors.green,
-                            fontWeight: FontWeight.bold,
-
-                            fontSize: 16)
-                         ),
+                          textStyle: TextStyle(
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16)),
                     ),
                   ],
                 ),
@@ -114,10 +139,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   "How can we help you today?",
                   style: GoogleFonts.poppins(
                       textStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-
-                          )
-                  ),
+                    fontWeight: FontWeight.bold,
+                  )),
                   textAlign: TextAlign.center,
                 ),
                 Container(
@@ -147,6 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
 
           SlidingSheet(
+            maxWidth: 350,
             elevation: 8,
             cornerRadius: 20,
             snapSpec: const SnapSpec(
@@ -156,18 +180,23 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             headerBuilder: (context, state) {
               return Container(
-                  height: 52,
+                  height: 90,
                   width: double.infinity,
                   color: Colors.blueGrey[900],
                   alignment: Alignment.center,
                   child: Column(
                     children: <Widget>[
                       Row(
-
                         children: <Widget>[
-                          IconButton(icon: Icon(Icons.keyboard_arrow_up,color: Colors.white,)),
+                          IconButton(
+                            icon: Icon(
+                              Icons.keyboard_arrow_up,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {},
+                          ),
                           Padding(
-                            padding: EdgeInsets.only(left: 80.0),
+                            padding: EdgeInsets.only(left: 60.0),
                             child: Text(
                               'Fuel Types Available',
                               style: TextStyle(
@@ -185,29 +214,37 @@ class _MyHomePageState extends State<MyHomePage> {
                           width: double.infinity,
                           height: 1.0,
                           child: DecoratedBox(
-                            decoration: BoxDecoration(color: Colors.yellow),
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                  colors: [
+                                    Colors.blue,
+                                    Colors.green,
+                                  ]),
+                            ),
                           ),
                         ),
                       )
                     ],
                   ));
-            },
+            }, //header builder
             builder: (context, state) {
-              var itemwidth = 200;
-              var itemheight = 165;
+              var itemwidth = 180;
+              var itemheight = 150;
               return Container(
-                height: 345,
+                height: 320,
                 color: Colors.blueGrey[900],
                 child: GridView.count(
                   crossAxisCount: 2,
-                  padding: EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(10.0),
                   childAspectRatio: (itemwidth / itemheight),
-                  crossAxisSpacing: 50.0,
-                  mainAxisSpacing: 30.0,
+                  crossAxisSpacing: 20.0,
+                  mainAxisSpacing: 20.0,
                   children: <Widget>[
                     InkWell(
                       child: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(18.0),
                             color: Colors.yellow[100],
@@ -248,7 +285,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     InkWell(
                       child: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(18.0),
                             color: Colors.indigo[100],
@@ -289,7 +326,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     InkWell(
                       child: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(18.0),
                             color: Colors.pink[200],
@@ -330,7 +367,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     InkWell(
                       child: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(18.0),
                             color: Colors.teal[100],

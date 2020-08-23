@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fuelme_2020/models/user.dart';
 
 class DatabaseService {
   final String uid;
