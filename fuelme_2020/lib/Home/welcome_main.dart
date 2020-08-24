@@ -38,7 +38,7 @@ class _welcome_mainState extends State<welcome_main> {
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 85.0, 0, 0),
           child: Text(
-            'Welcome to fuelMe',
+            'Welcome to fuelME',
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,

@@ -1,8 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fuelme_2020/Screens/Authenticate/sign_in.dart';
 import 'package:fuelme_2020/Services/authServ.dart';
+import 'package:fuelme_2020/Services/database.dart';
 import 'package:fuelme_2020/Shared/constants.dart';
 import 'package:fuelme_2020/Shared/loading.dart';
+import 'package:fuelme_2020/models/user.dart';
+import 'package:provider/provider.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
@@ -14,6 +18,7 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   final AuthServ _auth = AuthServ();
+
   final _formKey = GlobalKey<FormState>();
   bool loading = false; //loading widget initial stage
 
@@ -25,10 +30,14 @@ class _RegisterState extends State<Register> {
   String phone = "";
   String confirmPass = "";
   String error = "";
+  var questionStyle = TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
-    var questionStyle = TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
+    User _userFromFirebaseUser(FirebaseUser user) {
+      return user != null ? User(uid: user.uid) : null;
+    }
+
     return loading
         ? Loading()
         : Scaffold(
@@ -38,18 +47,6 @@ class _RegisterState extends State<Register> {
               backgroundColor: Colors.blueGrey[100],
               elevation: 0.1,
               title: Text('Sign Up'),
-              actions: <Widget>[
-                RaisedButton.icon(
-                    onPressed: () {
-                      // widget.toggleView();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignIn()),
-                      );
-                    },
-                    icon: Icon(Icons.person),
-                    label: Text('Signin'))
-              ],
             ),
             body: Container(
               margin: EdgeInsets.symmetric(vertical: 35, horizontal: 50),
@@ -66,33 +63,33 @@ class _RegisterState extends State<Register> {
                         style: TextStyle(
                             fontSize: 36, fontWeight: FontWeight.bold),
                       )),
-                      // //First Name
-                      // SizedBox(height: 15),
-                      // TextFormField(
-                      //   decoration:
-                      //       textInputDecor.copyWith(hintText: 'First Name'),
-                      //   validator: (val) =>
-                      //       val.isEmpty ? 'Enter your first Name' : null,
-                      //   onChanged: (val) {
-                      //     setState(() {
-                      //       firstName = val;
-                      //     });
-                      //   },
-                      // ),
+                      //First Name
+                      SizedBox(height: 15),
+                      TextFormField(
+                        decoration:
+                            textInputDecor.copyWith(hintText: 'First Name'),
+                        validator: (val) =>
+                            val.isEmpty ? 'Enter your first Name' : null,
+                        onChanged: (val) {
+                          setState(() {
+                            firstName = val;
+                          });
+                        },
+                      ),
 
-                      // //Last name
-                      // SizedBox(height: 15),
-                      // TextFormField(
-                      //   validator: (val) =>
-                      //       val.isEmpty ? 'Enter your last name' : null,
-                      //   onChanged: (val) {
-                      //     setState(() {
-                      //       lastName = val;
-                      //     });
-                      //   },
-                      //   decoration:
-                      //       textInputDecor.copyWith(hintText: 'Last Name'),
-                      // ),
+                      //Last name
+                      SizedBox(height: 15),
+                      TextFormField(
+                        validator: (val) =>
+                            val.isEmpty ? 'Enter your last name' : null,
+                        onChanged: (val) {
+                          setState(() {
+                            lastName = val;
+                          });
+                        },
+                        decoration:
+                            textInputDecor.copyWith(hintText: 'Last Name'),
+                      ),
 
                       //email
                       SizedBox(height: 15),
@@ -129,43 +126,43 @@ class _RegisterState extends State<Register> {
                             textInputDecor.copyWith(hintText: 'Password'),
                       ),
 
-                      // //Confirm Password
-                      // SizedBox(
-                      //   height: 15,
-                      // ),
-                      // TextFormField(
-                      //   validator: (val) => val.length < 6
-                      //       ? 'Enter a password with atleast 6 characters'
-                      //       : null,
-                      //   obscureText: true,
-                      //   onChanged: (val) {
-                      //     if (confirmPass.compareTo(password) != null) {
-                      //       setState(() {
-                      //         confirmPass = val;
-                      //       });
-                      //     } else {
-                      //       setState(
-                      //           () => error = "Your passwords do not match!");
-                      //       return null;
-                      //     }
-                      //   },
-                      //   decoration: textInputDecor.copyWith(
-                      //       hintText: 'Confirm Password'),
-                      // ),
+                      //Confirm Password
+                      SizedBox(
+                        height: 15,
+                      ),
+                      TextFormField(
+                        validator: (val) => val.length < 6
+                            ? 'Enter a password with atleast 6 characters'
+                            : null,
+                        obscureText: true,
+                        onChanged: (val) {
+                          if (confirmPass.compareTo(password) != null) {
+                            setState(() {
+                              confirmPass = val;
+                            });
+                          } else {
+                            setState(
+                                () => error = "Your passwords do not match!");
+                            return null;
+                          }
+                        },
+                        decoration: textInputDecor.copyWith(
+                            hintText: 'Confirm Password'),
+                      ),
 
-                      // //Phone
-                      // SizedBox(height: 15),
-                      // TextFormField(
-                      //   validator: (val) => val.isEmpty
-                      //       ? 'Enter your Nepalese Phone number'
-                      //       : null,
-                      //   onChanged: (val) {
-                      //     setState(() {
-                      //       phone = val;
-                      //     });
-                      //   },
-                      //   decoration: textInputDecor.copyWith(hintText: 'Phone'),
-                      // ),
+                      //Phone
+                      SizedBox(height: 15),
+                      TextFormField(
+                        validator: (val) => val.isEmpty
+                            ? 'Enter your Nepalese Phone number'
+                            : null,
+                        onChanged: (val) {
+                          setState(() {
+                            phone = val;
+                          });
+                        },
+                        decoration: textInputDecor.copyWith(hintText: 'Phone'),
+                      ),
 
                       //signup button
                       SizedBox(
@@ -186,11 +183,18 @@ class _RegisterState extends State<Register> {
                         ),
                         onPressed: () async {
                           if (_formKey.currentState.validate()) {
-                            setState(() {
-                              loading = true;
-                            });
-                            dynamic resultofReg = await _auth
-                                .registerWithEmailandPwd(email, password);
+                            setState(() => loading = true);
+                            dynamic resultofReg =
+                                await _auth.registerWithEmailandPwd(
+                              email,
+                              password,
+                              firstName,
+                              lastName,
+                              phone,
+                            );
+                            // await DatabaseService(uid: user).updateUserInfo(
+                            //     firstName, lastName, email, phone, password);
+
                             if (resultofReg == null) {
                               setState(() {
                                 error = 'Please enter valid credentials';
