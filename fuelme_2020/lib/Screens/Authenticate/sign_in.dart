@@ -90,9 +90,7 @@ class _SignInState extends State<SignIn> {
                       ),
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
-                          setState(() {
-                            loading = true;
-                          });
+                          setState(() => loading = true);
                           dynamic resultofReg = await _auth
                               .signinWithEmailandPwd(email, password);
                           if (resultofReg == null) {
