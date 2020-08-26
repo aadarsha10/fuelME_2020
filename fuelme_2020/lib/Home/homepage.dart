@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flappy_search_bar/search_bar_style.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,11 +22,52 @@ class _MyHomePageState extends State<MyHomePage> {
   LocationData _locationData;
   GoogleMapController mapController;
 
-  final LatLng _center = const LatLng(45.521563, -122.677433);
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
+  final LatLng _center = const LatLng(27.700769, 85.300140);
+  //markers
+  Set<Marker> _markers = HashSet<Marker>();
+  BitmapDescriptor _markerIcon;
+  void _setMarkerIcon() async {
+    _markerIcon = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(size: Size.square(52)), "asset/marker_icon.png");
   }
 
+  // //Polygon for marker
+  // Set<Polygon> _polygons = HashSet<Polygon>();
+  // void _setPolygon() {
+  //   List<LatLng> polygonLatLngs = List<LatLng>();
+
+  //   _polygons.add(Polygon(
+  //     polygonId: PolygonId("0"),
+  //     points: polygonLatLngs,
+  //     strokeWidth: 1,
+  //   ));
+  // }
+
+  //circle for marker
+  Set<Circle> _circle = HashSet<Circle>();
+  void _setCircle() {
+    List<LatLng> polygonLatLngs = List<LatLng>();
+
+    _circle.add(Circle(
+      circleId: CircleId("0"),
+      center: _center,
+      radius: 500,
+      fillColor: Colors.blue[50],
+    ));
+  }
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+    setState(() {
+      _markers.add(Marker(
+          markerId: MarkerId("0"),
+          position: _center,
+          infoWindow: InfoWindow(title: "Kathmandu"),
+          icon: _markerIcon));
+    });
+  }
+
+  // ignore: missing_return
   Future<bool> _requestPermission() async {
     _serviceEnabled = await location.serviceEnabled();
     if (!_serviceEnabled) {
@@ -39,6 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
 //    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
     _requestPermission();
+    _setMarkerIcon();
+    _setCircle();
     return Scaffold(
       drawer: Navbar(),
       appBar: AppBar(
@@ -89,6 +134,8 @@ class _MyHomePageState extends State<MyHomePage> {
               target: _center,
               zoom: 11.0,
             ),
+            markers: _markers,
+            circles: _circle,
           ),
           //google maps
 
