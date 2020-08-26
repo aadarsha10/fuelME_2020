@@ -34,9 +34,7 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    User _userFromFirebaseUser(FirebaseUser user) {
-      return user != null ? User(uid: user.uid) : null;
-    }
+    final user = Provider.of<User>(context);
 
     return loading
         ? Loading()
@@ -188,12 +186,7 @@ class _RegisterState extends State<Register> {
                                 await _auth.registerWithEmailandPwd(
                               email,
                               password,
-                              firstName,
-                              lastName,
-                              phone,
                             );
-                            // await DatabaseService(uid: user).updateUserInfo(
-                            //     firstName, lastName, email, phone, password);
 
                             if (resultofReg == null) {
                               setState(() {
