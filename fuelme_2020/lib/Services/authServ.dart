@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fuelme_2020/Services/database.dart';
+
 import 'package:fuelme_2020/models/user.dart';
 
 class AuthServ {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  DatabaseService _databaseService = DatabaseService();
   //create custom user obj based on firebaseuser
   User _userFromFirebaseUser(FirebaseUser user) {
     return user != null ? User(uid: user.uid) : null;
@@ -43,24 +42,16 @@ class AuthServ {
   }
 
   //registration
-  Future registerWithEmailandPwd(String firstName, String lastName,
-      String email, String phone, String password) async {
+  Future registerWithEmailandPwd(String email, String password) async {
     try {
-      AuthResult result = await _auth
-          .createUserWithEmailAndPassword(
-              email: email.trim(), password: password)
-          .then((user) {
-        _databaseService.updateUserInfo({
-          "firstName": firstName,
-          "lastname": lastName,
-          "email": email,
-          "phone": phone,
-          "password": password
-        });
-      });
+      AuthResult result = await _auth.createUserWithEmailAndPassword(
+          email: email.trim(), password: password);
 
       FirebaseUser firebaseuser = result.user;
 
+      //create a document of the user with the returned uid
+      // await DatabaseService(uid: firebaseuser.uid)
+      //     .updateUserInfo(firstName, lastName, email, phone, password);
       return _userFromFirebaseUser(firebaseuser);
     } catch (e) {
       print(e.toString());
