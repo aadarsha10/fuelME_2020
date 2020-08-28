@@ -189,9 +189,6 @@ class _RegisterState extends State<Register> {
                                 await _auth.registerWithEmailandPwd(
                               email,
                               password,
-                              firstName,
-                              lastName,
-                              phone,
                             );
 
                             if (resultofReg == null) {
