@@ -167,14 +167,17 @@ class _RegisterState extends State<Register> {
                         height: 15,
                       ),
                       RaisedButton(
-                        MediaQuery.of(context).size.width * 0.9,
+                        //MediaQuery.of(context).size.width * 0.9,
                         padding:
                             EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                         elevation: 1,
+
                         highlightElevation: 1,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
+
                         color: Colors.green,
+
                         child: Text(
                           "Sign up",
                           style: TextStyle(color: Colors.white),
