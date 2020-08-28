@@ -46,6 +46,12 @@ class _NavbarState extends State<Navbar> {
                         ],
                       ),
                     ),
+                     decoration: BoxDecoration(
+                color: Colors.blueGrey[900],
+                image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage('asset/photo.png'))),
+
                   ),
                   InkWell(
                     child: ListTile(
