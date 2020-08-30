@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fuelmeorder/animation/ScaleRoute.dart';
-import 'package:fuelmeorder/pages/FuelOrderPage.dart';
-import 'package:fuelmeorder/widgets/FuelDetailsSlider.dart';
+import 'package:fuelme_2020/animation/ScaleRoute.dart';
+import 'package:fuelme_2020/Home/FuelOrderPage.dart';
+import 'package:fuelme_2020/widgets/FuelDetailsSlider.dart';
 
 class FuelDetailsPage extends StatefulWidget {
   @override

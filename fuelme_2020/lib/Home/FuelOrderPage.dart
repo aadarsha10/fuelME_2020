@@ -303,14 +303,14 @@ class PromoCodeWidget extends StatelessWidget {
 class CartItem extends StatelessWidget {
   String productName;
   String productPrice;
-  String productImage;
+  // String productImage;
   String productCartQuantity;
 
   CartItem({
     Key key,
     @required this.productName,
     @required this.productPrice,
-    @required this.productImage,
+    // @required this.productImage,
     @required this.productCartQuantity,
   }) : super(key: key);
 
@@ -346,7 +346,7 @@ class CartItem extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Center(
                         child: Image.asset(
-                      "assets/images/fuelMe/$productImage.png",
+                      "assets/images/fuelMe/.png",
                       width: 110,
                       height: 100,
                     )),
