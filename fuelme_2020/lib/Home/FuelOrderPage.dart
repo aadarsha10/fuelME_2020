@@ -417,6 +417,7 @@ class CartItem extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class CartIconWithBadge extends StatelessWidget {
   int counter = 3;
 
@@ -460,6 +461,7 @@ class CartIconWithBadge extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class AddToCartMenu extends StatelessWidget {
   int productCounter;
 
