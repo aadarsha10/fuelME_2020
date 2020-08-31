@@ -40,6 +40,7 @@ dependencies:
   google_maps_flutter: ^0.5.30
   flappy_search_bar: ^1.7.2
   location: ^3.0.2
+  carousel_pro: ^1.0.0
 
 dev_dependencies:
   flutter_test:
