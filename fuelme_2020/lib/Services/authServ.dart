@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fuelme_2020/Services/database.dart';
+
 import 'package:fuelme_2020/models/user.dart';
 
 class AuthServ {
@@ -42,16 +42,16 @@ class AuthServ {
   }
 
   //registration
-  Future registerWithEmailandPwd(String firstName, String lastName,
-      String email, String phone, String password) async {
+  Future registerWithEmailandPwd(String email, String password) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email.trim(), password: password);
+
       FirebaseUser firebaseuser = result.user;
 
       //create a document of the user with the returned uid
-      await DatabaseService(uid: firebaseuser.uid)
-          .updateUserInfo(firstName, lastName, email, phone, password);
+      // await DatabaseService(uid: firebaseuser.uid)
+      //     .updateUserInfo(firstName, lastName, email, phone, password);
       return _userFromFirebaseUser(firebaseuser);
     } catch (e) {
       print(e.toString());

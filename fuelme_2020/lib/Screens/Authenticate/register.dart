@@ -34,9 +34,7 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    User _userFromFirebaseUser(FirebaseUser user) {
-      return user != null ? User(uid: user.uid) : null;
-    }
+    final user = Provider.of<User>(context);
 
     return loading
         ? Loading()
@@ -63,33 +61,33 @@ class _RegisterState extends State<Register> {
                         style: TextStyle(
                             fontSize: 36, fontWeight: FontWeight.bold),
                       )),
-                      //First Name
-                      SizedBox(height: 15),
-                      TextFormField(
-                        decoration:
-                            textInputDecor.copyWith(hintText: 'First Name'),
-                        validator: (val) =>
-                            val.isEmpty ? 'Enter your first Name' : null,
-                        onChanged: (val) {
-                          setState(() {
-                            firstName = val;
-                          });
-                        },
-                      ),
+                      // //First Name
+                      // SizedBox(height: 15),
+                      // TextFormField(
+                      //   decoration:
+                      //       textInputDecor.copyWith(hintText: 'First Name'),
+                      //   validator: (val) =>
+                      //       val.isEmpty ? 'Enter your first Name' : null,
+                      //   onChanged: (val) {
+                      //     setState(() {
+                      //       firstName = val;
+                      //     });
+                      //   },
+                      // ),
 
-                      //Last name
-                      SizedBox(height: 15),
-                      TextFormField(
-                        validator: (val) =>
-                            val.isEmpty ? 'Enter your last name' : null,
-                        onChanged: (val) {
-                          setState(() {
-                            lastName = val;
-                          });
-                        },
-                        decoration:
-                            textInputDecor.copyWith(hintText: 'Last Name'),
-                      ),
+                      // //Last name
+                      // SizedBox(height: 15),
+                      // TextFormField(
+                      //   validator: (val) =>
+                      //       val.isEmpty ? 'Enter your last name' : null,
+                      //   onChanged: (val) {
+                      //     setState(() {
+                      //       lastName = val;
+                      //     });
+                      //   },
+                      //   decoration:
+                      //       textInputDecor.copyWith(hintText: 'Last Name'),
+                      // ),
 
                       //email
                       SizedBox(height: 15),
@@ -126,57 +124,60 @@ class _RegisterState extends State<Register> {
                             textInputDecor.copyWith(hintText: 'Password'),
                       ),
 
-                      //Confirm Password
-                      SizedBox(
-                        height: 15,
-                      ),
-                      TextFormField(
-                        validator: (val) => val.length < 6
-                            ? 'Enter a password with atleast 6 characters'
-                            : null,
-                        obscureText: true,
-                        onChanged: (val) {
-                          if (confirmPass.compareTo(password) != null) {
-                            setState(() {
-                              confirmPass = val;
-                            });
-                          } else {
-                            setState(
-                                () => error = "Your passwords do not match!");
-                            return null;
-                          }
-                        },
-                        decoration: textInputDecor.copyWith(
-                            hintText: 'Confirm Password'),
-                      ),
+                      // //Confirm Password
+                      // SizedBox(
+                      //   height: 15,
+                      // ),
+                      // TextFormField(
+                      //   validator: (val) => val.length < 6
+                      //       ? 'Enter a password with atleast 6 characters'
+                      //       : null,
+                      //   obscureText: true,
+                      //   onChanged: (val) {
+                      //     if (confirmPass.compareTo(password) != null) {
+                      //       setState(() {
+                      //         confirmPass = val;
+                      //       });
+                      //     } else {
+                      //       setState(
+                      //           () => error = "Your passwords do not match!");
+                      //       return null;
+                      //     }
+                      //   },
+                      //   decoration: textInputDecor.copyWith(
+                      //       hintText: 'Confirm Password'),
+                      // ),
 
-                      //Phone
-                      SizedBox(height: 15),
-                      TextFormField(
-                        validator: (val) => val.isEmpty
-                            ? 'Enter your Nepalese Phone number'
-                            : null,
-                        onChanged: (val) {
-                          setState(() {
-                            phone = val;
-                          });
-                        },
-                        decoration: textInputDecor.copyWith(hintText: 'Phone'),
-                      ),
+                      // //Phone
+                      // SizedBox(height: 15),
+                      // TextFormField(
+                      //   validator: (val) => val.isEmpty
+                      //       ? 'Enter your Nepalese Phone number'
+                      //       : null,
+                      //   onChanged: (val) {
+                      //     setState(() {
+                      //       phone = val;
+                      //     });
+                      //   },
+                      //   decoration: textInputDecor.copyWith(hintText: 'Phone'),
+                      // ),
 
                       //signup button
                       SizedBox(
                         height: 15,
                       ),
                       RaisedButton(
-                        // MediaQuery.of(context).size.width * 0.9,
+                        //MediaQuery.of(context).size.width * 0.9,
                         padding:
                             EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                         elevation: 1,
+
                         highlightElevation: 1,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
+
                         color: Colors.green,
+
                         child: Text(
                           "Sign up",
                           style: TextStyle(color: Colors.white),
@@ -188,12 +189,7 @@ class _RegisterState extends State<Register> {
                                 await _auth.registerWithEmailandPwd(
                               email,
                               password,
-                              firstName,
-                              lastName,
-                              phone,
                             );
-                            // await DatabaseService(uid: user).updateUserInfo(
-                            //     firstName, lastName, email, phone, password);
 
                             if (resultofReg == null) {
                               setState(() {
@@ -214,7 +210,7 @@ class _RegisterState extends State<Register> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                              "Already have an account? ",
+                              "Already have an account?",
                               style: questionStyle,
                             ),
                             GestureDetector(
