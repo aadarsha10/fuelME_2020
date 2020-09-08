@@ -46,12 +46,11 @@ class _NavbarState extends State<Navbar> {
                         ],
                       ),
                     ),
-                     decoration: BoxDecoration(
-                color: Colors.blueGrey[900],
-                image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage('asset/photo.png'))),
-
+                    decoration: BoxDecoration(
+                        color: Colors.blueGrey[900],
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: AssetImage('asset/photo.png'))),
                   ),
                   InkWell(
                     child: ListTile(
@@ -97,7 +96,9 @@ class _NavbarState extends State<Navbar> {
                         Padding(
                           padding: const EdgeInsets.all(6.0),
                           child: GestureDetector(
-                              onTap: () => {},
+                              onTap: () {
+                                aboutFuelme();
+                              },
                               child: Text(
                                 "About Us",
                                 style:
@@ -138,5 +139,23 @@ class _NavbarState extends State<Navbar> {
               ),
             ),
           );
+  }
+
+  aboutFuelme() {
+    showAboutDialog(
+        context: context,
+        applicationIcon: FlutterLogo(),
+        applicationName: 'FuelMe',
+        applicationVersion: '0.0.1',
+        applicationLegalese:
+            'This is the final Assignment project which was developed by Softwarican 2nd year student',
+        children: <Widget>[
+          Text(
+              'Google Play offers a licensing service that lets you enforce licensing policies for applications that you publish on Google Play. With Google Play Licensing, your application can query Google Play at run time to obtain the licensing status for the current user, then allow or disallow further use as appropriate.Using the service, you can apply a flexible licensing policy on an application-by-application basis—each application can enforce licensing in the way most appropriate for it. If necessary, an application can apply custom constraints based on the licensing status obtained from Google Play. For example, an application can check the licensing status and then apply custom constraints that allow the user to run it unlicensed for a specific validity period. An application can also restrict use of the application to a specific device, in addition to any other constraints.'),
+          Text(
+              'Google Play offers a licensing service that lets you enforce licensing policies for applications that you publish on Google Play. With Google Play Licensing, your application can query Google Play at run time to obtain the licensing status for the current user, then allow or disallow further use as appropriate.Using the service, you can apply a flexible licensing policy on an application-by-application basis—each application can enforce licensing in the way most appropriate for it. If necessary, an application can apply custom constraints based on the licensing status obtained from Google Play. For example, an application can check the licensing status and then apply custom constraints that allow the user to run it unlicensed for a specific validity period. An application can also restrict use of the application to a specific device, in addition to any other constraints.'),
+          Text(
+              'Google Play offers a licensing service that lets you enforce licensing policies for applications that you publish on Google Play. With Google Play Licensing, your application can query Google Play at run time to obtain the licensing status for the current user, then allow or disallow further use as appropriate.Using the service, you can apply a flexible licensing policy on an application-by-application basis—each application can enforce licensing in the way most appropriate for it. If necessary, an application can apply custom constraints based on the licensing status obtained from Google Play. For example, an application can check the licensing status and then apply custom constraints that allow the user to run it unlicensed for a specific validity period. An application can also restrict use of the application to a specific device, in addition to any other constraints.'),
+        ]);
   }
 }
