@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fuelme_2020/animation/ScaleRoute.dart';
 import 'package:fuelme_2020/widgets/Navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'homepage.dart';
 
 class Profile extends StatelessWidget {
   @override
@@ -63,7 +66,9 @@ class Profile extends StatelessWidget {
                         elevation: 8.0,
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                        child:IconButton(icon: Icon(Icons.arrow_back_ios),onPressed: (){},),
+                        child:IconButton(icon: Icon(Icons.arrow_back_ios),onPressed: ()=>{
+                          Navigator.push(context, ScaleRoute(page:MyHomePage ()))
+                        },),
                       )
 
                   ),

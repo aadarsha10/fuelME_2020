@@ -1,7 +1,12 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
+import 'package:fuelme_2020/Home/FuelDetailsPage.dart';
+import 'package:fuelme_2020/Home/FuelOrderPage.dart';
+import 'package:fuelme_2020/Home/homepage.dart';
+import 'package:fuelme_2020/Home/profile.dart';
 import 'package:fuelme_2020/Services/authServ.dart';
 import 'package:fuelme_2020/Shared/loading.dart';
+import 'package:fuelme_2020/animation/ScaleRoute.dart';
 
 class Navbar extends StatefulWidget {
   @override
@@ -63,7 +68,9 @@ class _NavbarState extends State<Navbar> {
                         'Home',
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
-                      onTap: () => {},
+                      onTap: () => {
+                        Navigator.push(context, ScaleRoute(page: MyHomePage()))
+                      },
                     ),
                     splashColor: Colors.green,
                   ),
@@ -74,7 +81,9 @@ class _NavbarState extends State<Navbar> {
                     ),
                     title: Text('Orders',
                         style: TextStyle(color: Colors.white, fontSize: 18)),
-                    onTap: () => {Navigator.of(context).pop()},
+                    onTap: () => {
+                      Navigator.push(context, ScaleRoute(page: FuelDetailsPage()))
+                    },
                   ),
                   ListTile(
                     leading: Icon(Icons.monetization_on, color: Colors.white),
@@ -97,7 +106,9 @@ class _NavbarState extends State<Navbar> {
                         Padding(
                           padding: const EdgeInsets.all(6.0),
                           child: GestureDetector(
-                              onTap: () => {},
+                              onTap: () => {
+//                                Navigator.push(context, ScaleRoute(page: ()))
+                              },
                               child: Text(
                                 "About Us",
                                 style:
@@ -107,7 +118,9 @@ class _NavbarState extends State<Navbar> {
                         Padding(
                           padding: const EdgeInsets.all(6.0),
                           child: GestureDetector(
-                              onTap: () => {},
+                              onTap: () => {
+//                                Navigator.push(context, ScaleRoute(page: ()))
+                              },
                               child: Text("Privacy Policy",
                                   style: TextStyle(
                                       color: Colors.grey, fontSize: 16))),
@@ -115,7 +128,9 @@ class _NavbarState extends State<Navbar> {
                         Padding(
                           padding: const EdgeInsets.all(6.0),
                           child: GestureDetector(
-                              onTap: () => {},
+                              onTap: () => {
+                                Navigator.push(context, ScaleRoute(page: Profile()))
+                              },
                               child: Text("Settings",
                                   style: TextStyle(
                                       color: Colors.grey, fontSize: 16))),

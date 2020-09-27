@@ -170,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "Good Morning,",
+                      "Hello,",
                     ),
                     Text(
                       "John",
